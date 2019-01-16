@@ -51,20 +51,20 @@ int main(int argc, char** argv)
     while (number_sticks > 0){
       user = getUserChoice();
       while (user > number_sticks){
-	  printf("there aren't that many sticks left, please choose a smaller number\n");
-	  user = getUserChoice();
-	}
+	printf("there aren't that many sticks left, please choose a smaller number\n");
+	user = getUserChoice();
+      }
       number_sticks -= user;
       if (number_sticks == 0){
 	printf("You lose!\n");
-	exit(1);}
+	exit(0);}
       printf("\nThere are %d sticks on board\n", number_sticks);
       computer = getComputerChoice(number_sticks);
       printf("Computer selects %d.\n", computer);
       number_sticks -= computer;
       if (number_sticks == 0){
 	printf("You win!\n");
-	exit(1);}
+	exit(0);}
       printf("\nThere are %d sticks on board\n", number_sticks);
     }
     printf("done.\n");
