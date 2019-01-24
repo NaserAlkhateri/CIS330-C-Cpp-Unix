@@ -9,7 +9,7 @@ void initClock( ClockType *clock){
   int hours,mins,secs;
   time_t now;
   time(&now);
-  printf("today is : %s", ctime(&now));
+  //printf("today is : %s", ctime(&now));
   struct tm *local = localtime(&now);
   hours = local->tm_hour;
   mins = local->tm_min;
@@ -19,8 +19,8 @@ void initClock( ClockType *clock){
   clock->sec = secs;
 }
 void printClock(const time_t cur_time, const ClockType *clock){
-
-
+  
+  //seperate the time format, (HH:MM:SS)
   int hr, mn ,sc, hr1, mn1, sc1;
   hr = clock->hour;
   mn = clock->min;
@@ -31,18 +31,20 @@ void printClock(const time_t cur_time, const ClockType *clock){
   hr = hr % 10;
   mn = mn % 10;
   sc = sc % 10;
+
+  //all numbers in art form
   char numbers[12][12][12] =
-    {{" @@@ ", "  @ ", " @@@ ",  "@@@@@", "   @ ", "@@@@@", " @@@ ", "@@@@@", " @@@ ", " @@@ ", "   "},
-     {"@   @", " @@ ", "@   @",  "    @", "  @@ ", "@    ", "@   @", "    @", "@   @", "@   @", "   "},
-     {"@   @", "  @ ", "    @",  "    @", " @ @ ", "@    ", "@    ", "   @ ", "@   @", "@   @", " @ "},
-     {"@   @", "  @ ", "    @",  "@@@@@", "@@@@@", "@@@@ ", "@@@@ ", "  @  ", " @@@ ", "@   @", "   "},
-     {"@   @", "  @ ", "   @ ",  "    @", "   @ ", "    @", "@   @", "  @  ", "@   @", " @@@@", "   "},
-     {"@   @", "  @ ", "  @  ",  "    @", "   @ ", "    @", "@   @", "  @  ", "@   @", "    @", " @ "},
-     {"@   @", "  @ ", " @   ",  "    @", "   @ ", "@   @", "@   @", "  @  ", "@   @", "@   @", "   "},
-     {" @@@ " ," @@@ ","@@@@@",  "@@@@@", "  @  ", " @@@ ", " @@@ ", "  @  ", " @@@ ", " @@@ ", "   "}};
+    {{" @@@ ", "  @  ", " @@@ ",  "@@@@@", "   @ ", "@@@@@", " @@@ ", "@@@@@", " @@@ ", " @@@ ", "   "},
+     {"@   @", " @@  ", "@   @",  "    @", "  @@ ", "@    ", "@   @", "    @", "@   @", "@   @", "   "},
+     {"@   @", "  @  ", "    @",  "    @", " @ @ ", "@    ", "@    ", "   @ ", "@   @", "@   @", " @ "},
+     {"@   @", "  @  ", "    @",  "@@@@@", "@@@@@", "@@@@ ", "@@@@ ", "  @  ", " @@@ ", "@   @", "   "},
+     {"@   @", "  @  ", "   @ ",  "    @", "   @ ", "    @", "@   @", "  @  ", "@   @", " @@@@", "   "},
+     {"@   @", "  @  ", "  @  ",  "    @", "   @ ", "    @", "@   @", "  @  ", "@   @", "    @", " @ "},
+     {"@   @", "  @  ", " @   ",  "    @", "   @ ", "@   @", "@   @", "  @  ", "@   @", "@   @", "   "},
+     {" @@@ ", " @@@ ", "@@@@@",  "@@@@@", "   @ ", " @@@ ", " @@@ ", "  @  ", " @@@ ", " @@@ ", "   "}};
 
   int i;
-  
+  //loop through array and print in rows of the given numbers
   for(i = 0; i < 10; i++){
 
     printf("%s %s %s %s %s %s %s %s", numbers[i][hr1], numbers[i][hr],

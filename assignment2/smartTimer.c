@@ -1,10 +1,10 @@
-//timer.c
+//smarTimer.c
 #include "clock.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-
+#include <curses.h>
 
 void initTimer(ClockType *clock, int minutes, int seconds){
   //place values in struct
@@ -15,8 +15,16 @@ void initTimer(ClockType *clock, int minutes, int seconds){
 
 void runTimer(){
 
+  
+  WINDOW * mainwin;
   ClockType *clock;
   int mn,sc,mn0 ,sc0, mn1, sc1;
+
+  if ( (mainwin = initscr()) == NULL ) {
+    fprintf(stderr, "Error initialising ncurses.\n");
+    exit(EXIT_FAILURE);
+  }
+
   //get time and seperate each individual number
   mn = clock->min;
   sc = clock->sec;
@@ -33,16 +41,18 @@ void runTimer(){
       {"@   @", "  @  ", "   @ ",  "    @", "   @ ", "    @", "@   @", "  @  ", "@   @", " @@@@", "   "},
       {"@   @", "  @  ", "  @  ",  "    @", "   @ ", "    @", "@   @", "  @  ", "@   @", "    @", " @ "},
       {"@   @", "  @  ", " @   ",  "    @", "   @ ", "@   @", "@   @", "  @  ", "@   @", "@   @", "   "},
-      {" @@@ " ," @@@ ","@@@@@",  "@@@@@", "   @ ", " @@@ ", " @@@ ", "  @  ", " @@@ ", " @@@ ", "   "}};
+      {" @@@ ", " @@@ ","@@@@@" ,  "@@@@@", "   @ ", " @@@ ", " @@@ ", "  @  ", " @@@ ", " @@@ ", "   "}};
 
    //print start time
    int i;
    for(i = 0; i < 10; i++){
-     printf("%s %s %s %s %s",numbers[i][mn1],numbers[i][mn0],numbers[i][10],
+     printw("%s %s %s %s %s",numbers[i][mn1],numbers[i][mn0],numbers[i][10],
 	    numbers[i][sc1],numbers[i][sc0]);
-     printf("\n");
+     printw("\n");
 
    }
+   refresh();
+   erase();
    //loop until reachs 00:00
    while(mn != 0  || sc != 0){
      //if seconds reach 0 while minute is not 0,
@@ -61,15 +71,17 @@ void runTimer(){
      //wait 1 second before printing
      sleep(1);
      for(i = 0; i < 10; i++){
-       printf("%s %s %s %s %s",numbers[i][mn1],numbers[i][mn0],numbers[i][10],
+       printw("%s %s %s %s %s",numbers[i][mn1],numbers[i][mn0],numbers[i][10],
 	      numbers[i][sc1],numbers[i][sc0]);
-       printf("\n");
-
+       printw("\n");
      }
+     refresh();
+     erase();
    }
-
+   delwin(mainwin);
+   endwin();
+   refresh();
   
-
 }
 
 void cleanTimer(ClockType  *clock){}

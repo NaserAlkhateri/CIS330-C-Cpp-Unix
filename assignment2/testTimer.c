@@ -11,7 +11,8 @@ int main(){
   printf("How long should the timer run (MM:SS)? ");
   scanf("%d:%d",&min,&sec);
   initTimer(&clock, min, sec);
-  runTimer2(&clock);
+  runTimer();
+  //runTimer2(&clock);
 
 
   return 0;
