@@ -6,6 +6,12 @@
 #include <unistd.h>
 #include <curses.h>
 
+
+
+
+//compile using:
+// gcc -std=c11 -o smartTimer.exe smartTimer.c  -lncurses 
+
 void initTimer(ClockType *clock, int minutes, int seconds){
   //place values in struct
   clock->min = minutes;
@@ -78,6 +84,7 @@ void runTimer(){
      refresh();
      erase();
    }
+   sleep(2);//so that 00:00 could be seen too
    delwin(mainwin);
    endwin();
    refresh();
@@ -85,3 +92,15 @@ void runTimer(){
 }
 
 void cleanTimer(ClockType  *clock){}
+
+int main(){
+
+  int min, sec;
+  ClockType clock;
+  printf("How long should the timer run (MM:SS)? ");
+  scanf("%d:%d",&min,&sec);
+  initTimer(&clock, min, sec);
+  runTimer();
+
+  return 0;
+}
