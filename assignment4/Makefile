@@ -1,22 +1,16 @@
-SOURCES = reversi.cpp
-HEADERS = reversi.h
-OBJECTS = $(SOURCES:.c=.o)
-LIBS = -lm
-
-CC = g++
-CFLAGS = -std=c14 -g -fPIC
+CXX = g++
+CXXFLAGS = -std=c++14 -g
 
 %.o: %.cpp
-	$(CC) -c $(CFLAGS) $<
+	$(CXX) -c $(CXXFLAGS) $<
 
 tests: reversi.exe
 
 reversi.exe: reversi.o
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 memcheckReversi.exe: reversi.exe
 	valgrind --leak-check=yes --track-origins=yes ./reversi.exe
 
 clean:
-	$(RM) $(OBJECTS) *.exe
-	$(RM) $(OBJECTS) *~
+	$(RM) -r *.o *.exe*
