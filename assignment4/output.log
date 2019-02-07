@@ -1,0 +1,106 @@
+Script started on 2019-02-06 22:06:38-08:00
+nalkhate@ix-dev:~/uoregon-cis330/assignment4$ exit[1P1 3./reversi.exe make[K clean
+rm -f -r *.o *.exe*
+nalkhate@ix-dev:~/uoregon-cis330/assignment4$ make clean[6Pexit[1P1 3exitmake clean[Kmake clean[6Pexit[1P1 3./reversi.exe make[K clean[K
+g++ -c -std=c++14 -g -Wall main.cpp
+g++ -c -std=c++14 -g -Wall reversi.cpp
+g++ -std=c++14 -g -Wall -o reversi.exe main.o reversi.o
+nalkhate@ix-dev:~/uoregon-cis330/assignment4$ ./reversi.exe 
+Please enter the size of the board 4 - 16: 
+4
+	0 1 2 3 
+0	. . . . 
+1	. b w . 
+2	. w b . 
+3	. . . . 
+Scores: player1> 2 player2> 2
+Player 1 turn, input 2 numbers (0-3) row col: 3 2 1
+	0 1 2 3 
+0	. . . . 
+1	. b w . 
+2	. b b . 
+3	. b . . 
+Scores: player1> 4 player2> 1
+Player 2 turn, input 2 numbers (0-3) row col: 3 0
+	0 1 2 3 
+0	. . . . 
+1	. b w . 
+2	. w b . 
+3	w b . . 
+Scores: player1> 3 player2> 3
+Player 1 turn, input 2 numbers (0-3) row col: 0 2
+	0 1 2 3 
+0	. . b . 
+1	. b b . 
+2	. w b . 
+3	w b . . 
+Scores: player1> 5 player2> 2
+Player 2 turn, input 2 numbers (0-3) row col: 0 3
+	0 1 2 3 
+0	. . b w 
+1	. b w . 
+2	. w b . 
+3	w b . . 
+Scores: player1> 4 player2> 4
+Player 1 turn, input 2 numbers (0-3) row col: 2 0
+	0 1 2 3 
+0	. . b w 
+1	. b w . 
+2	b b b . 
+3	w b . . 
+Scores: player1> 6 player2> 3
+Player 2 turn, input 2 numbers (0-3) row col: 0 1
+	0 1 2 3 
+0	. w w w 
+1	. b w . 
+2	b b b . 
+3	w b . . 
+Scores: player1> 5 player2> 5
+Player 1 turn, input 2 numbers (0-3) row col: 1 3
+	0 1 2 3 
+0	. w w w 
+1	. b b b 
+2	b b b . 
+3	w b . . 
+Scores: player1> 7 player2> 4
+Player 2 turn, input 2 numbers (0-3) row col: 2 3
+	0 1 2 3 
+0	. w w w 
+1	. b w b 
+2	b b b w 
+3	w b . . 
+Scores: player1> 6 player2> 6
+Player 1 turn, input 2 numbers (0-3) row col: 3 3
+	0 1 2 3 
+0	. w w b 
+1	. b w b 
+2	b b b b 
+3	w b . b 
+Scores: player1> 9 player2> 4
+Player 2 turn, input 2 numbers (0-3) row col: 1 0
+	0 1 2 3 
+0	. w w b 
+1	w w w w 
+2	b b b b 
+3	w b . b 
+Scores: player1> 7 player2> 7
+Player 1 turn, input 2 numbers (0-3) row col: 0 0
+	0 1 2 3 
+0	b b b b 
+1	w w w w 
+2	b b b b 
+3	w b . b 
+Scores: player1> 10 player2> 5
+Player 2 turn, input 2 numbers (0-3) row col: 3 2
+	0 1 2 3 
+0	b b w b 
+1	w w w w 
+2	b b w b 
+3	w b w b 
+Scores: player1> 8 player2> 8
+No more possible moves for player 1
+Game Over!
+nalkhate@ix-dev:~/uoregon-cis330/assignment4$ exit
+exit
+
+Script done on 2019-02-06 22:10:08-08:00

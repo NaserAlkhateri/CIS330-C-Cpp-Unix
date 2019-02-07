@@ -6,7 +6,7 @@ CXXFLAGS = -std=c++14 -g -Wall
 
 tests: reversi.exe
 
-reversi.exe: reversi.o
+reversi.exe: main.o reversi.o
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 memcheckReversi.exe: reversi.exe
