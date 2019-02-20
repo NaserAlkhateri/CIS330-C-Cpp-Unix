@@ -20,6 +20,7 @@ int main(int argc, const char *argv[]){
 	cout << "Original text:" << endl << input;
 	
 	DateCipher ci(array);
+	//ci.array = array;
 	encrypted = ci.encrypt(input);
 	cout << "Encrypted text:" << endl << encrypted;
 	decrypted = ci.decrypt(encrypted);

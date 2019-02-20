@@ -14,7 +14,7 @@ public:
 	virtual std::string decrypt( std::string &text );
 private:
 	int m_date[6];
-
+	int *array;
 };
 
 #endif /* CAESAR_HPP_ */

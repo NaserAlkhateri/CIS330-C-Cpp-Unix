@@ -4,7 +4,8 @@
 using namespace std;
 
 DateCipher::DateCipher(int a[6]){
-	m_date = a;
+	//m_date = a;
+	array = a;
 }
 
 string
@@ -17,7 +18,7 @@ DateCipher::encrypt( string &inputText ) {
 	int index = 0;
 	
 	//string text = inputText;
-	string::size_type len = text.length();
+	//string::size_type len = text.length();
 	for (i = 0; i != len; ++i){
 		if(text[i] == ' '){
 			array2[i] = 0; // each space will be shifted by 0, so it stay the same
@@ -114,7 +115,7 @@ DateCipher::decrypt( string &inputText ) {
 	int index = 0;
 	
 	//string text = inputText;
-	string::size_type len = text.length();
+	//string::size_type len = text.length();
 	for (i = 0; i != len; ++i){
 		if(text[i] == ' '){
 			array2[i] = 0; // each space will be shifted by 0, so it stay the same
