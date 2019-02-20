@@ -6,15 +6,16 @@
 
 class DateCipher : public Cipher {
 public:
-    DateCipher(int a[6]); // constructor
+    DateCipher(int a[6], int b[100]); // constructor
 
 	// Default destructor 
     
 	virtual std::string encrypt( std::string &text );
 	virtual std::string decrypt( std::string &text );
 private:
-	int m_date[6];
-	int *array;
+
+	int *m_numbers;
+	int *m_shift;
 };
 
 #endif /* CAESAR_HPP_ */

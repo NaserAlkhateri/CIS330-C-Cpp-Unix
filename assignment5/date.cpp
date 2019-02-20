@@ -3,9 +3,10 @@
 #include "date.hpp"
 using namespace std;
 
-DateCipher::DateCipher(int a[6]){
-  //m_date = a;
-  array = a;
+DateCipher::DateCipher(int a[6],int b[100]){
+
+  m_numbers = a;
+  m_shift=b;
 }
 
 string
@@ -14,45 +15,12 @@ DateCipher::encrypt( string &inputText ) {
   string::size_type len = text.length();
 
 
-  int i,j,array2[100];
-  int index = 0;
-	int curr = 0;
-
-  for (i = 0; i != len; ++i){
-    if(text[i] == ' '){
-      array2[i] = 0; // each space will be shifted by 0, so it stay the same
-    }else if(text[i] >= 'a' && text[i] <= 'z'){
-      if(index < 6){
-	array2[i] = array[index];
-	index++;
-      }else{
-	
-	index = 0;
-	array2[i] = array[index];
-	index++;
-      }
-    }else if(text[i] >= 'A' && text[i] <= 'Z'){
-      if(index < 6){
-	array2[i] = array[index];
-	
-	index++;
-      }else{
-	index=0;
-	array2[i] = array[index];
-	index++;
-      }
-      
-      
-    }else{array2[i] = 0;}
-   
-
-   
-  }
+  int i,j;
   
   //shift
       for (i = 0; i != len; ++i) {
     if (text[i] >= 'a' && text[i] <= 'z') {
-      for (j = 0; j < array2[i]; ++j){
+      for (j = 0; j < m_shift[i]; ++j){
 	if(text[i] + 1 == '{'){
 	  text[i] = 'a';  
 	}
@@ -63,7 +31,7 @@ DateCipher::encrypt( string &inputText ) {
       }
     }
     if (text[i] >= 'A' && text[i] <= 'Z') {
-      for (j = 0; j < array2[i]; ++j){
+      for (j = 0; j < m_shift[i]; ++j){
 	if(text[i] + 1 == '['){
 	  text[i] = 'A';
 	}
@@ -86,45 +54,11 @@ DateCipher::decrypt( string &inputText ) {
 
 
 
-  int i,j,array2[100];
-  int index = 0;
-	int curr = 0;
-
-  for (i = 0; i != len; ++i){
-    if(text[i] == ' '){
-      array2[i] = 0; // each space will be shifted by 0, so it stay the same
-    }else if(text[i] >= 'a' && text[i] <= 'z'){
-      if(index < 6){
-	array2[i] = array[index];
-	index++;
-      }else{
-	
-	index = 0;
-	array2[i] = array[index];
-	index++;
-      }
-    }else if(text[i] >= 'A' && text[i] <= 'Z'){
-      if(index < 6){
-	array2[i] = array[index];
-	
-	index++;
-      }else{
-	index=0;
-	array2[i] = array[index];
-	index++;
-      }
-      
-      
-    }else{array2[i] = 0;}
-   
-
-   
-  }
-  
+  int i,j;
   //shift
       for (i = 0; i != len; ++i) {
     if (text[i] >= 'a' && text[i] <= 'z') {
-      for (j = 0; j < array2[i]; ++j){
+      for (j = 0; j < m_shift[i]; ++j){
 	if(text[i] - 1 == '`'){
 	  text[i] = 'z';  
 	}
@@ -135,7 +69,7 @@ DateCipher::decrypt( string &inputText ) {
       }
     }
     if (text[i] >= 'A' && text[i] <= 'Z') {
-      for (j = 0; j < array2[i]; ++j){
+      for (j = 0; j < m_shift[i]; ++j){
 	if(text[i] - 1 == '@'){
 	  text[i] = 'Z';
 	}
