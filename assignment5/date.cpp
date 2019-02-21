@@ -5,7 +5,7 @@ using namespace std;
 
 DateCipher::DateCipher(int a[6],int b[100]){
 
-  m_numbers = a;
+  m_numbers = a;//this isn't used atm
   m_shift=b;
 }
 
@@ -16,9 +16,14 @@ DateCipher::encrypt( string &inputText ) {
 
 
   int i,j;
-  
+  /*
+	This will use the array of ints and go by each index in both
+	whereas the number from the int array is taken to shift the 
+	letter with the same index. All non-alphabet charecters are
+	given 0 in the int array, so the index works on both arrays.
+  */
   //shift
-      for (i = 0; i != len; ++i) {
+  for (i = 0; i != len; ++i) {
     if (text[i] >= 'a' && text[i] <= 'z') {
       for (j = 0; j < m_shift[i]; ++j){
 	if(text[i] + 1 == '{'){
@@ -56,7 +61,7 @@ DateCipher::decrypt( string &inputText ) {
 
   int i,j;
   //shift
-      for (i = 0; i != len; ++i) {
+  for (i = 0; i != len; ++i) {
     if (text[i] >= 'a' && text[i] <= 'z') {
       for (j = 0; j < m_shift[i]; ++j){
 	if(text[i] - 1 == '`'){

@@ -11,7 +11,7 @@
 
 class CaesarCipher : public Cipher {
 public:
-    CaesarCipher(); // constructor
+    CaesarCipher(int x); // constructor
 
 	// Default destructor 
     
